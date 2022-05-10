@@ -1,0 +1,8 @@
+{
+  "appService.zipIgnorePattern": [
+    "node_modules{,/**}",
+    ".vscode{,/**}"
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/ff0408e9-0126-4d39-8e27-273e0a4f8574/resourceGroups/Open-Data-CW2/providers/Microsoft.Web/sites/open-data-cw2-api",
+  "appService.deploySubpath": "."
+}
