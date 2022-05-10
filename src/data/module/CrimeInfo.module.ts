@@ -3,16 +3,26 @@ class CrimeInfo {
     longitude: string
     latitude: string
     type: string
+    detail:string
+    distance: number
+    location:string
 
     constructor(
         id: string,
         longitude: string,
         latitude: string,
-        type: string) {
+        type: string,
+        detail:string,
+        distance:number,
+        location:string) {
         this.id = id
         this.longitude = longitude
         this.latitude = latitude
         this.type = type
+        this.detail = detail
+        this.location = location
+        this.distance = distance ? distance : -1
+        
     }
 }
 

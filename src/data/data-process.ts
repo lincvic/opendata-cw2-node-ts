@@ -40,7 +40,7 @@ function saveCrimeData2JSON():void{
             } else if (CrimeType.other.indexOf(item['Crime type']) !== -1) {
                 crimeType = CrimeTypeEnum.Other
             }
-            crimeInfoList.push(new CrimeInfo(item[ 'Crime ID'], item.Longitude, item.Latitude, crimeType))
+            crimeInfoList.push(new CrimeInfo(item[ 'Crime ID'], item.Longitude, item.Latitude, crimeType, item['Crime type'], -1, item.Location))
         })
 
         fs.writeFile('src/data/json/2022-02.json', JSON.stringify(crimeInfoList), (err)=>{
