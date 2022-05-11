@@ -30,9 +30,7 @@ class CommonUtils{
                     crimeInfoList.push(item)
                 }
             })
-
             crimeInfoList.sort((a,b) => a.distance > b.distance ? 1 : -1)
-
             dataCallBack(crimeInfoList)
         })
     }

@@ -2,9 +2,10 @@ import express from 'express'
 import {Router} from "express/ts4.0"
 import logger from "../util/logger"
 import CrimeDAO from '../data/DAO/crime-data-dao'
-
 const DAO = new CrimeDAO()
+
 import UtilClass from '../util/common-utils'
+import CrimeEthnicityDistribution from "../data/module/CrimeEthnicityDistribution.module"
 
 const util = new UtilClass()
 
@@ -70,8 +71,21 @@ router.post("/getAllCoordinateByDistance", (req, res) => {
                 res.status(200).json(data)
             })
     }
+})
 
-
+router.get("/getGovEthnicityDistribution", (req, res)=>{
+    logger.info(req.originalUrl)
+    DAO.getGovEthnicityData((data:any) =>{
+        const base = data.Asia + data.Black + data.Mixed + data.Other + data.White
+        let crimeDistribution:CrimeEthnicityDistribution = new CrimeEthnicityDistribution(
+            data.Asia/base,
+            data.Black/base,
+            data.Mixed/base,
+            data.White/base,
+            data.Other/base
+        )
+        res.status(200).json(crimeDistribution)
+    })
 })
 
 module.exports = router

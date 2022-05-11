@@ -1,4 +1,4 @@
-class Crime {
+class CrimeNumber {
     theft: number
     violence: number
     publicOrder: number
@@ -16,4 +16,4 @@ class Crime {
     }
 }
 
-export = Crime
+export = CrimeNumber
