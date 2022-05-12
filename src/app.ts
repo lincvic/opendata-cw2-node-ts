@@ -9,6 +9,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 app.use("/api/map/", require("./router/map-router"))
+app.use("/api/user/", require("./router/user-router"))
 
 app.get("/", (req, res) => {
     res.send("Server Started!")

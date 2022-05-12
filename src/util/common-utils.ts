@@ -1,9 +1,13 @@
 import GeoPoint from "geopoint"
 import CrimeInfo from "../data/module/CrimeInfo.module"
-import CrimeDataDao from "../data/DAO/crime-data-dao"
+import CrimeDataDao from "../DAO/crime-data-dao"
 const crimeDataDao = new CrimeDataDao()
 
 class CommonUtils{
+    parseJSON(item:any):JSON{
+        return JSON.parse(JSON.stringify(item))
+    }
+
     calculateDistance(
         longA:number,
         latA:number,

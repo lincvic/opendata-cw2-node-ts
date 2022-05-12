@@ -1,7 +1,7 @@
 import express from 'express'
 import {Router} from "express/ts4.0"
 import logger from "../util/logger"
-import CrimeDAO from '../data/DAO/crime-data-dao'
+import CrimeDAO from '../DAO/crime-data-dao'
 const DAO = new CrimeDAO()
 
 import UtilClass from '../util/common-utils'
