@@ -15,15 +15,14 @@ router.post("/createNewUser", (req, res) => {
     const uid:string = req.body.uid
     const nick_name:string = req.body.nick_name
     const email:string = req.body.email
-    const ethnicity:string = req.body.ethnicity
-    if (!uid || !nick_name || !email || !ethnicity){
+    if (!uid || !nick_name || !email){
         logger.error(req.originalUrl + " Input Error")
         res.status(400).json({
             result: false,
             msg: `Input error`
         })
     }else {
-        const newUser:User = new User(uid, nick_name, email, ethnicity)
+        const newUser:User = new User(uid, nick_name, email, "")
         DAO.createNewUser(newUser).then(()=>{
             res.status(200).json({
                 result: true
@@ -52,6 +51,38 @@ router.post("/getUserByUID", (req,res)=>{
                 })
             }
 
+        }).catch((e)=>{
+            logger.error(req.originalUrl+ ' ' + e.message)
+            res.status(400).json({
+                result: false,
+                msg: `Firebase error`
+            })
+        })
+    }
+})
+
+router.patch('/updateUserEthnicity', (req, res)=>{
+    const uid:string = req.body.uid
+    const ethnicity:string = req.body.ethnicity
+
+    if(!uid || !ethnicity){
+        logger.error(req.originalUrl + " Input Error")
+        res.status(400).json({
+            result: false,
+            msg: `Input error`
+        })
+    }else {
+        DAO.updateUserEthnicity(uid, ethnicity).then((it)=>{
+            if (it){
+                res.status(200).json({
+                    result: true
+                })
+            }else {
+                res.status(200).json({
+                    result: false,
+                    message: `User ${uid} doesn't exist`
+                })
+            }
         }).catch((e)=>{
             logger.error(req.originalUrl+ ' ' + e.message)
             res.status(400).json({

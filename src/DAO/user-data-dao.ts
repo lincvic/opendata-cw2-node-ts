@@ -14,6 +14,11 @@ class UserDataDao {
         const doc = ref.doc(uid.toString())
         return await doc.get()
     }
+
+    async updateUserEthnicity(uid:string, ethnicity:string){
+        const doc = ref.doc(uid.toString())
+        return await doc.update({ethnicity: ethnicity})
+    }
 }
 
 export default UserDataDao
