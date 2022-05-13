@@ -3,7 +3,7 @@ class CrimeInfo {
     longitude: string
     latitude: string
     type: string
-    detail:string
+    detail:Array<string> | string
     distance: number
     location:string
 
@@ -12,7 +12,7 @@ class CrimeInfo {
         longitude: string,
         latitude: string,
         type: string,
-        detail:string,
+        detail:Array<string> | string,
         distance:number,
         location:string) {
         this.id = id

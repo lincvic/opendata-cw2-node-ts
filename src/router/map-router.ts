@@ -13,7 +13,7 @@ const router: Router = express.Router()
 
 router.get("/getAllLocation", (req, res) => {
     logger.info(req.originalUrl)
-    DAO.getCrimeData((data: string) => {
+    DAO.getCombinedCrimeData((data: string) => {
         if (data) {
             res.json(data)
         } else {
